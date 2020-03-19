@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="app">
-      <?=str_replace(["<template>", "</template>"], ["<div>", "</div>"], file_get_contents("layouts/default.engine"))?>
+      <?=str_replace(["<template>", "</template>"], ["<div>", "</div>"], file_get_contents("themes/layouts/default.engine"))?>
     </div>
 
     <!-- SETUP AUTO LOAD -->
@@ -21,9 +21,9 @@
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
     <!-- POST -->
-    <script src="assets/js/system.js"></script>
-    <script src="assets/js/router.js"></script>
-    <script src="assets/js/store.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="themes/assets/js/system.js"></script>
+    <script src="themes/assets/js/router.js"></script>
+    <script src="themes/assets/js/store.js"></script>
+    <script src="themes/assets/js/main.js"></script>
   </body>
 </html>
