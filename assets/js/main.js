@@ -5,8 +5,8 @@ let app = new Vue({
   router: router,
   metaInfo() {
     return {
-      "title": "pirdweb",
-      "titleTemplate": "%s - Pird",
+      "title": "Home",
+      "titleTemplate": "%s - Title2",
       "meta": [
         {"charset": "utf-8"},
         {"name": "viewport", "content": "width=device-width, initial-scale=1"},
