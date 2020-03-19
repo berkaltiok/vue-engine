@@ -1,9 +1,12 @@
-function load(fileName) {
-  if (!fileName) return false;
-  let xhr = new XMLHttpRequest();
-  xhr.open('GET', fileName);
-  xhr.send();
-  xhr.onload = function () {
-    if (xhr.status >= 200 && xhr.status < 300) return xhr.response;
-  };
+function loadComponent(componentName, path) {
+  return new Promise(function (resolve, reject) {
+    requirejs([`core/VueComponentGetter.php?f=${path}/${componentName}`], function () {
+      const component = Vue.component(componentName);
+      if (component) {
+        resolve(component);
+      } else {
+        reject();
+      }
+    });
+  });
 }

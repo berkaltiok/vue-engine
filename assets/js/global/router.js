@@ -13,7 +13,13 @@ const router = new VueRouter({
   base: '/vue-engine/',
   routes: [
     { path: '/', component: Home },
-    { path: '/about', component: About },
+    {
+      path: '/about',
+      name: "About",
+      component: function (resolve, reject) {
+        loadComponent('About', '/pages/About').then(resolve, reject);
+      }
+    },
     { path: '/contact', component: Contact }
   ]
 });
