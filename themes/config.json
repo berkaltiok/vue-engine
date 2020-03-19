@@ -1,4 +1,5 @@
 {
+  "pre-script": [],
   "scripts": [
     "assets/js/system.js",
     "assets/js/router.js",
