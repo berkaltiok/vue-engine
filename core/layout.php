@@ -12,12 +12,12 @@
       <?=str_replace(["<template>", "</template>"], ["<div>", "</div>"], file_get_contents("layouts/default.engine"))?>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-
     <!-- SETUP AUTO LOAD -->
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
-    <script src="https://unpkg.com/vuex@3.1.3/dist/vuex.min.js"></script>
     <script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.min.js"></script>
+    <script src="https://unpkg.com/vuex@3.1.3/dist/vuex.min.js"></script>
+    <script src="https://unpkg.com/vue-meta@2.3.3/dist/vue-meta.js"></script>
+
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
     <!-- POST -->
