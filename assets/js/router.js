@@ -1,18 +1,13 @@
-let Home = {
-  template: "<div>Home Page</div>"
-};
-let About = {
-  template: "<div>About Page</div>"
-};
-let Contact = {
-  template: "<div>Contact Page</div>"
-};
-
 const router = new VueRouter({
   mode: 'history',
   base: '/vue-engine/',
   routes: [
-    { path: '/', component: Home },
+    {
+      path: '/',
+      component: function (resolve, reject) {
+        loadComponent('Home', '/pages/Home').then(resolve, reject);
+      }
+    },
     {
       path: '/about',
       name: "About",
@@ -20,6 +15,8 @@ const router = new VueRouter({
         loadComponent('About', '/pages/About').then(resolve, reject);
       }
     },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: {
+        template: "<div>Contact Page</div>"
+      } }
   ]
 });
