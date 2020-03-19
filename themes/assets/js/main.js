@@ -16,4 +16,4 @@ let app = new Vue({
       "script": []
     }
   }
-})
+});

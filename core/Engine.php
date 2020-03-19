@@ -36,13 +36,36 @@ class Engine
    * @param array $array
    * @param string $type
    */
-  public function minify($array, $type = 'js') {
+  public function minify($array, $type = "script") {
     if (is_array($array)) {
       $fileData = "";
       foreach ($array as $file) {
-        if (file_exists($file)) $fileData .= str_replace(["\n", "  "], "", fopen($file, "r"));
+        if (file_exists($file)) $fileData .= str_replace(["\n", "  "], "", @file_get_contents($file))."\n";
       }
-      // TODO: File control, write file, return file url/tags
+      $cacheTime = strtotime("-1 day 00:00");
+      if ($type === "script") list($file, $html) = array("app.js", "<script src='core/assets/app.js?v=$cacheTime'></script>");
+      if ($type === "style") list($file, $html) = array("style.css", "<link rel='stylesheet' href='core/assets/style.css?v=$cacheTime'>");
+      if (!file_exists('core/assets/'.$file)) fopen('core/assets/'.$file, "w");
+      $minifyFile = fopen('core/assets/'.$file, 'w');
+      fwrite($minifyFile, $fileData);
+      fclose($minifyFile);
+      return $html;
     }
+  }
+
+  public function loadJS($minifyFileList = []) {
+    if (is_array($minifyFileList)) {
+      if ($this->config["scripts"]) {
+        foreach ($this->config["scripts"] as $localFileDir) {
+          if (!in_array($this->themes.SLASH.$localFileDir, $minifyFileList))
+            array_push($minifyFileList, $this->themes.SLASH.$localFileDir);
+        }
+      }
+      return $this->minify($minifyFileList, "script");
+    }
+  }
+
+  public function layout() {
+
   }
 }
