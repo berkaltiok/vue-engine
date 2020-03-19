@@ -21,9 +21,9 @@
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
     <!-- POST -->
-    <script src="assets/js/global/system.js"></script>
-    <script src="assets/js/global/router.js"></script>
-    <script src="assets/js/global/store.js"></script>
-    <script src="assets/js/global/main.js"></script>
+    <script src="assets/js/system.js"></script>
+    <script src="assets/js/router.js"></script>
+    <script src="assets/js/store.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

@@ -1,8 +1,7 @@
 {
-  "pre-scripts": [
-    "assets/js/global/system.js"
-  ],
+  "pre-scripts": [],
   "post-scripts": [
+    "assets/js/global/system.js",
     "assets/js/global/main.js",
     "assets/js/global/router.js",
     "assets/js/global/store.js"
