@@ -15,8 +15,12 @@ const router = new VueRouter({
         loadComponent('About', '/pages/About').then(resolve, reject);
       }
     },
-    { path: '/contact', component: {
-        template: "<div>Contact Page</div>"
-      } }
+    {
+      path: '/contact',
+      name: "Contact",
+      component: function (resolve, reject) {
+        loadComponent('Contact', '/pages/Contact').then(resolve, reject);
+      }
+    },
   ]
 });

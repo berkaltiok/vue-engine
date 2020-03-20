@@ -1,7 +1,6 @@
 {
   "name": "Default Theme",
   "description": "Default Theme Description/Info",
-
   "pre-script": [],
   "scripts": [
     "assets/js/system.js",
