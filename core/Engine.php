@@ -13,7 +13,7 @@ class Engine
 
   function __construct($themes_path = "") {
     // Set Themes Path
-    if ($themes_path) $this->themes .= "/$themes_path"; $this->setThemesConstruct = true;
+    if ($themes_path) $this->themes .= DIRECTORY_SEPARATOR.$themes_path; $this->setThemesConstruct = true;
     // Import Config File
     if (file_exists($this->themes.DIRECTORY_SEPARATOR.$this->config_file)) {
       $config_file_open = file_get_contents($this->themes.DIRECTORY_SEPARATOR.$this->config_file);
@@ -30,7 +30,7 @@ class Engine
    * @param string $themes_path
    */
   public function setTheme($themes_path = "") {
-    if (!$this->setThemesConstruct && $themes_path) $this->themes .= "/$themes_path";
+    if (!$this->setThemesConstruct && $themes_path) $this->themes .= DIRECTORY_SEPARATOR.$themes_path;
   }
 
   /**
