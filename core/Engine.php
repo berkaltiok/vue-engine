@@ -8,18 +8,18 @@ class Engine
   // Engine Public Config
   private $core = SYSDIR;
   public $themes = APPPATH;
-  public $config_file = "config.json";
-  public $config = [];
+  public $themes_file = "theme.json";
+  public $themes_config = [];
 
   function __construct($themes_path = "") {
     // Set Themes Path
     if ($themes_path) $this->themes .= DIRECTORY_SEPARATOR.$themes_path; $this->setThemesConstruct = true;
     // Import Config File
-    if (file_exists($this->themes.DIRECTORY_SEPARATOR.$this->config_file)) {
-      $config_file_open = file_get_contents($this->themes.DIRECTORY_SEPARATOR.$this->config_file);
+    if (file_exists($this->themes.DIRECTORY_SEPARATOR.$this->themes_file)) {
+      $config_file_open = file_get_contents($this->themes.DIRECTORY_SEPARATOR.$this->themes_file);
       if ($config_file_open) {
         $config_file_array = json_decode($config_file_open, true);
-        if (is_array($config_file_array)) $this->config = $config_file_array;
+        if (is_array($config_file_array)) $this->themes_config = $config_file_array;
       }
     }
   }
@@ -65,8 +65,8 @@ class Engine
    */
   public function loadJS($minifyFileList = []) {
     if (is_array($minifyFileList)) {
-      if ($this->config["scripts"]) {
-        foreach ($this->config["scripts"] as $localFileDir) {
+      if ($this->themes_config["scripts"]) {
+        foreach ($this->themes_config["scripts"] as $localFileDir) {
           if (!in_array($this->themes.DIRECTORY_SEPARATOR.$localFileDir, $minifyFileList))
             array_push($minifyFileList, $this->themes.DIRECTORY_SEPARATOR.$localFileDir);
         }
