@@ -6,6 +6,7 @@ class Engine
   private $setThemesConstruct;
 
   // Engine Public Config
+  private $core = SYSDIR;
   public $themes = APPPATH;
   public $config_file = "config.json";
   public $config = [];
@@ -46,10 +47,10 @@ class Engine
         if (file_exists($file)) $fileData .= str_replace(["\n", "  "], "", @file_get_contents($file))."\n";
       }
       $cacheTime = strtotime("-1 day 00:00");
-      if ($type === "script") list($file, $html) = array("app.js", "<script src='core/assets/app.js?v=$cacheTime'></script>");
-      if ($type === "style") list($file, $html) = array("style.css", "<link rel='stylesheet' href='core/assets/style.css?v=$cacheTime'>");
-      if (!file_exists('core/assets/'.$file)) fopen('core/assets/'.$file, "w");
-      $minifyFile = fopen('core/assets/'.$file, 'w');
+      if ($type === "script") list($file, $html) = array("app.js", "<script src='{$this->core}/assets/app.js?v=$cacheTime'></script>");
+      if ($type === "style") list($file, $html) = array("style.css", "<link rel='stylesheet' href='{$this->core}/assets/style.css?v=$cacheTime'>");
+      if (!file_exists($this->core.'/assets/'.$file)) fopen($this->core.'/assets/'.$file, "w");
+      $minifyFile = fopen($this->core.'/assets/'.$file, 'w');
       fwrite($minifyFile, $fileData);
       fclose($minifyFile);
       return $html;
