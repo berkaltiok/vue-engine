@@ -1,4 +1,6 @@
 <?php
+  define("SLASH", "/");
+
   require_once "Engine.php";
   $engine = new Engine();
 

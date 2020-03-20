@@ -8,7 +8,17 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"><?=$engine->loadLayout()?></div>
-    <?=$engine->loadJS(["core/assets/js/vue.min.js", "core/assets/js/vue-router.min.js", "core/assets/js/vuex.min.js", "core/assets/js/vue-meta.min.js", "core/assets/js/require.min.js"])?>
+    <div id="app">
+      <?=str_replace(["<template>", "</template>"], ["<div>", "</div>"], file_get_contents("themes/layout/default.engine"))?>
+    </div>
+
+    <?=$engine->loadJS([
+      "core/assets/js/vue.min.js",
+      "core/assets/js/vue-router.min.js",
+      "core/assets/js/vuex.min.js",
+      "core/assets/js/vue-meta.min.js",
+
+      "core/assets/js/require.min.js"
+    ])?>
   </body>
 </html>
