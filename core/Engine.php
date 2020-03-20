@@ -76,6 +76,6 @@ class Engine
   }
 
   public function loadLayout() {
-    return str_replace(["<template>", "</template>"], ["<div>", "</div>"], @file_get_contents($this->themes."/layout/default.engine"));
+    return str_replace(["<template>", "</template>"], ["<div>", "</div>"], @file_get_contents($this->themes."/layout/layout.html"));
   }
 }
