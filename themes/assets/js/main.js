@@ -1,16 +1,16 @@
 Vue.use(VueMeta);
-
 let app = new Vue({
   el: '#app',
-  router: router,
+  router,
+  store,
   metaInfo() {
     return {
       "title": "Home",
-      "titleTemplate": "%s - Title2",
+      "titleTemplate": "%s - Vue Engine",
       "meta": [
         {"charset": "utf-8"},
         {"name": "viewport", "content": "width=device-width, initial-scale=1"},
-        {"name": "description", "content": "Pird Tech Web Site"}
+        {"name": "description", "content": "Vue Engine Description"}
       ],
       "style": [],
       "script": []
