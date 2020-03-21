@@ -7,7 +7,7 @@
     $getName = strip_tags(trim(addslashes($_GET["n"])));
     // TODO: Return error messages
     if (!$getDir) return false;
-    $loader = new EngineLoader();
+    $loader = new EngineLoader(ACTIVE_THEME);
     if ($loader->checkComponent($getDir)) {
       // Get JS Code
       $getJSCode = $loader->getComponent(".js", $getName);

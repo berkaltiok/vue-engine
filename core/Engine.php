@@ -6,8 +6,8 @@ class Engine
   private $setThemesConstruct;
 
   // Engine Protected Config
-  protected $system = "core";
-  protected $themes = "themes";
+  public $system = "core";
+  public $themes = "themes";
 
   // Engine Public Config
   public $themes_name = "";

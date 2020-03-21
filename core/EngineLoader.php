@@ -4,6 +4,10 @@
   {
     protected $component;
 
+    public function __construct($themes_path = "") {
+      parent::__construct($themes_path);
+    }
+
     /**
      * @param $dir
      * @return bool
@@ -27,7 +31,7 @@
     }
 
     /**
-     * @param $buffer
+     * @param $input
      * @return string|string[]|null
      */
     public function minifyHTML($input) {
