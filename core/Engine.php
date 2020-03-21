@@ -78,7 +78,13 @@ class Engine
             array_push($minifyFileList, $this->themes.DIRECTORY_SEPARATOR.$localFileDir);
         }
       }
-      return $this->minify($minifyFileList, "script");
+      $pre_script = $this->themes_config["pre-script"];
+      if (is_array($pre_script)) {
+        foreach ($pre_script as $key => $preScriptDir) {
+          $pre_script[$key] = $this->themes.DIRECTORY_SEPARATOR.$preScriptDir;
+        }
+      }
+      return $this->minify(array_merge($pre_script, $minifyFileList), "script");
     }
   }
 
