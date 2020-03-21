@@ -8,10 +8,8 @@
     <title>Title</title>
   </head>
   <body>
-    <noscript>
-      <strong>Sorry, this project isn't working properly without JavaScript enabled. Please enable to continue.</strong>
-    </noscript>
-    <div id="app"><?=$engine->loadLayout()?></div>
+    <noscript><strong>Sorry, this project isn't working properly without JavaScript enabled. Please enable to continue.</strong></noscript>
+    <layout id="app"></layout>
     <?=$engine->loadJS(["core/assets/js/vue.min.js", "core/assets/js/vue-router.min.js", "core/assets/js/vuex.min.js", "core/assets/js/vue-meta.min.js", "core/assets/js/require.min.js"])?>
   </body>
 </html>
