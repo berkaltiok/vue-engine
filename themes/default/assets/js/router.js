@@ -4,23 +4,15 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: function (resolve, reject) {
-        loadComponent('Home', '/pages/Home').then(resolve, reject);
-      }
+      component: (resolve, reject) => loadComponent('Home', '/pages/Home').then(resolve, reject)
     },
     {
       path: '/about',
-      name: "About",
-      component: function (resolve, reject) {
-        loadComponent('About', '/pages/About').then(resolve, reject);
-      }
+      component: (resolve, reject) => loadComponent('About', '/pages/About').then(resolve, reject)
     },
     {
       path: '/contact',
-      name: "Contact",
-      component: function (resolve, reject) {
-        loadComponent('Contact', '/pages/Contact').then(resolve, reject);
-      }
-    },
+      component: (resolve, reject) => loadComponent('Contact', '/pages/Contact').then(resolve, reject)
+    }
   ]
 });
