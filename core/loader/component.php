@@ -15,6 +15,7 @@
       $getHTMLCode = $loader->getComponent(".html", $getName);
       // Minift HTML Codes
       $getHTMLCode = $loader->minifyHTML($getHTMLCode);
+      $getHTMLCode = str_replace("VUE.THEME", $loader->getTheme(), $getHTMLCode);
       if ($getJSCode && $getHTMLCode) {
         echo str_replace("VUE.ENGINE", "`$getHTMLCode`", $getJSCode);
       } else {

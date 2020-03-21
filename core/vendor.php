@@ -7,7 +7,8 @@
   | set the theme you want to be active.
   |
   */
-  define('ACTIVE_THEME', '');
+  define('ACTIVE_THEME', 'timber');
+  define('DIRECTION', 'vue-engine');
 
 
   /*
@@ -16,4 +17,4 @@
   |----------------------------------------------
   */
   require_once "Engine.php";
-  $engine = new Engine(ACTIVE_THEME);
+  $engine = new Engine(ACTIVE_THEME, DIRECTION);
