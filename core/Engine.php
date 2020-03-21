@@ -5,15 +5,22 @@ class Engine
   // Engine Settings
   private $setThemesConstruct;
 
+  // Engine Protected Config
+  protected $system = "core";
+  protected $themes = "themes";
+
   // Engine Public Config
-  private $core = SYSDIR;
-  public $themes = APPPATH;
+  public $themes_name = "";
   public $themes_file = "theme.json";
   public $themes_config = [];
 
   function __construct($themes_path = "") {
     // Set Themes Path
-    if ($themes_path) $this->themes .= DIRECTORY_SEPARATOR.$themes_path; $this->setThemesConstruct = true;
+    if ($themes_path)
+      $this->themes .= DIRECTORY_SEPARATOR.$themes_path;
+      $this->themes_name = $themes_path;
+      $this->setThemesConstruct = true;
+
     // Import Config File
     if (file_exists($this->themes.DIRECTORY_SEPARATOR.$this->themes_file)) {
       $config_file_open = file_get_contents($this->themes.DIRECTORY_SEPARATOR.$this->themes_file);
@@ -47,10 +54,10 @@ class Engine
         if (file_exists($file)) $fileData .= str_replace(["\n", "  "], "", @file_get_contents($file))."\n";
       }
       $cacheTime = strtotime("-1 day 00:00");
-      if ($type === "script") list($file, $html) = array("app.js", "<script src='{$this->core}/assets/app.js?v=$cacheTime'></script>");
-      if ($type === "style") list($file, $html) = array("style.css", "<link rel='stylesheet' href='{$this->core}/assets/style.css?v=$cacheTime'>");
-      if (!file_exists($this->core.'/assets/'.$file)) fopen($this->core.'/assets/'.$file, "w");
-      $minifyFile = fopen($this->core.'/assets/'.$file, 'w');
+      if ($type === "script") list($file, $html) = array("app.js", "<script src='{$this->system}/assets/app.js?v=$cacheTime'></script>");
+      if ($type === "style") list($file, $html) = array("style.css", "<link rel='stylesheet' href='{$this->system}/assets/style.css?v=$cacheTime'>");
+      if (!file_exists($this->system.'/assets/'.$file)) fopen($this->system.'/assets/'.$file, "w");
+      $minifyFile = fopen($this->system.'/assets/'.$file, 'w');
       fwrite($minifyFile, $fileData);
       fclose($minifyFile);
       return $html;
