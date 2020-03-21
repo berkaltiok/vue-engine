@@ -90,6 +90,6 @@ sw.*
 # Vim swap files
 *.swp
 
-*/assets/js/app.js
-*/assets/css/build.css
 themes/timber
+themes/default/assets/js/app.js
+themes/default/assets/css/build.css
