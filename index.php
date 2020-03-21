@@ -1,7 +1,20 @@
 <?php
+  /*
+  |----------------------------------------------
+  | Path Settings
+  |----------------------------------------------
+  | If you want to change the data, you will
+  | also change to the core/vendor.php file.
+  |
+  */
   $system_path = 'core';
-  $themes_folder = 'themes';
+  $themes_path = 'themes';
 
+  /*
+  |----------------------------------------------
+  | Path Control
+  |----------------------------------------------
+  */
   if (!is_dir($system_path)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: ' . pathinfo(__FILE__, PATHINFO_BASENAME);
@@ -23,12 +36,12 @@
   define('FCPATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
   define('SYSDIR', basename(BASEPATH));
 
-  if (is_dir($themes_folder)) {
-    if (($_temp = realpath($themes_folder)) !== FALSE) {
-      $themes_folder = $_temp;
+  if (is_dir($themes_path)) {
+    if (($_temp = realpath($themes_path)) !== FALSE) {
+      $themes_path = $_temp;
     } else {
-      $themes_folder = strtr(
-        rtrim($themes_folder, '/\\'),
+      $themes_path = strtr(
+        rtrim($themes_path, '/\\'),
         '/\\',
         DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR
       );
@@ -39,6 +52,7 @@
     die();
   }
 
-  define('APPPATH', $themes_folder . DIRECTORY_SEPARATOR);
+  define('APPPATH', $themes_path . DIRECTORY_SEPARATOR);
 
   require_once BASEPATH . "vendor.php";
+  require_once BASEPATH . "public.php";
