@@ -9,10 +9,17 @@
     if (!$getDir) return false;
     $loader = new EngineLoader();
     if ($loader->checkComponent($getDir)) {
-      $getHTMLCode = $loader->getComponent(".html", $getName);
-      $getHTMLCode = $loader->minifyHTML($getHTMLCode);
+      // Get JS Code
       $getJSCode = $loader->getComponent(".js", $getName);
-      echo str_replace("VUE.ENGINE", "`$getHTMLCode`", $getJSCode);
+      // Get HTML File
+      $getHTMLCode = $loader->getComponent(".html", $getName);
+      // Minift HTML Codes
+      $getHTMLCode = $loader->minifyHTML($getHTMLCode);
+      if ($getJSCode && $getHTMLCode) {
+        echo str_replace("VUE.ENGINE", "`$getHTMLCode`", $getJSCode);
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
