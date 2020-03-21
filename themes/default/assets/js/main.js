@@ -3,6 +3,11 @@ let app = new Vue({
   el: '#app',
   router,
   store,
+  components: {
+    layout: function (resolve, reject) {
+      loadComponent("layout", "/layout").then(resolve, reject);
+    }
+  },
   metaInfo() {
     return {
       "title": "Home",
