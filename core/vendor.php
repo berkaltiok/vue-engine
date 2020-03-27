@@ -7,7 +7,7 @@
   | set the theme you want to be active.
   |
   */
-  define('ACTIVE_THEME', 'default');
+  define('ACTIVE_THEME', 'timber');
   define('DIRECTION', 'vue-engine');
 
 
