@@ -13,11 +13,22 @@
       $getJSCode = $loader->getComponent(".js", $getName);
       // Get HTML File
       $getHTMLCode = $loader->getComponent(".html", $getName);
+      preg_match_all('@<component:(.*?)>@si', $getHTMLCode, $findComponent);
+      $getHTMLCode = str_replace(["<template>", "</template>", "<component:", "</component"], ["<div>", "</div>", "<", "</"], $getHTMLCode);
+      $componentList = []; $componentVue = "";
+      if ($findComponent[1]) foreach ($findComponent[1] as $value) {
+        $getComponentName = explode(" ", $value);
+        if ($getComponentName[0]) {
+          $finnalyComponentName = str_replace("/", "", $getComponentName[0]);
+          $componentList[] = $finnalyComponentName;
+          $componentVue .= "{$finnalyComponentName}: (resolve, reject) => loadComponent('{$finnalyComponentName}', '/components/{$finnalyComponentName}').then(resolve, reject),";
+        }
+      }
       // Minift HTML Codes
       $getHTMLCode = $loader->minifyHTML($getHTMLCode);
       $getHTMLCode = str_replace("VUE.THEME", $loader->getTheme(), $getHTMLCode);
       if ($getJSCode && $getHTMLCode) {
-        echo str_replace(["VUE.THEME", "VUE.ENGINE"], [$loader->getTheme(), "`$getHTMLCode`"], $getJSCode);
+        echo str_replace(["VUE.THEME", "VUE.COMPONENT", "VUE.ENGINE"], [$loader->getTheme(), "{{$componentVue}}", "`$getHTMLCode`"], $getJSCode);
       } else {
         return false;
       }
