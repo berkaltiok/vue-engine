@@ -15,12 +15,11 @@
       $getHTMLCode = $loader->getComponent(".html", $getName);
       preg_match_all('@<component:(.*?)>@si', $getHTMLCode, $findComponent);
       $getHTMLCode = str_replace(["<template>", "</template>", "<component:", "</component"], ["<div>", "</div>", "<", "</"], $getHTMLCode);
-      $componentList = []; $componentVue = "";
+      $componentVue = "";
       if ($findComponent[1]) foreach ($findComponent[1] as $value) {
         $getComponentName = explode(" ", $value);
         if ($getComponentName[0]) {
           $finnalyComponentName = str_replace("/", "", $getComponentName[0]);
-          $componentList[] = $finnalyComponentName;
           $componentVue .= "{$finnalyComponentName}: (resolve, reject) => loadComponent('{$finnalyComponentName}', '/components/{$finnalyComponentName}').then(resolve, reject),";
         }
       }
