@@ -14,7 +14,7 @@
       // Get HTML File
       $getHTMLCode = $loader->getComponent(".html", $getName);
       preg_match_all('@<component:(.*?)>@si', $getHTMLCode, $findComponent);
-      $getHTMLCode = str_replace(["<template>", "</template>", "<component:", "</component"], ["<div>", "</div>", "<", "</"], $getHTMLCode);
+      $getHTMLCode = str_replace(["<template>", "</template>", "<component:", "</component:"], ["<div>", "</div>", "<", "</"], $getHTMLCode);
       $componentVue = "";
       if ($findComponent[1]) foreach ($findComponent[1] as $value) {
         $getComponentName = explode(" ", $value);
