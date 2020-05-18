@@ -10,6 +10,9 @@ function loadComponent(componentName, path) {
     });
   });
 }
+function load(name, path = "/"+name) {
+  return (resolve, reject) => loadComponent(name, path).then(resolve, reject);
+}
 function loadCSS(cssURL) {
   return new Promise(function (resolve, reject) {
     const link = document.createElement('link');
