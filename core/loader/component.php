@@ -20,7 +20,7 @@
         $getComponentName = explode(" ", $value);
         if ($getComponentName[0]) {
           $finnalyComponentName = str_replace("/", "", $getComponentName[0]);
-          $componentVue .= "{$finnalyComponentName}: (resolve, reject) => loadComponent('{$finnalyComponentName}', '/components/{$finnalyComponentName}').then(resolve, reject),";
+          $componentVue .= "{$finnalyComponentName}: load('{$finnalyComponentName}', '/components/{$finnalyComponentName}'),";
         }
       }
       // Minift HTML Codes
